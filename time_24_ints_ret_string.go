@@ -13,6 +13,10 @@ package praxis
 //A.length == 4
 //0 <= A[i] <= 9
 
+//TODO
 func largestTimeFromDigits(A []int) string {
+	if len(A) != 4 {
+		return ""
+	}
 	return ""
 }

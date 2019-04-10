@@ -21,6 +21,7 @@ type TreeNode struct {
 	Right *ListNode
 }
 
+//TODO
 func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 	if root == nil || (root.Left == p && root.Right == q) || (root.Right == p && root.Left == q) {
 		return root
