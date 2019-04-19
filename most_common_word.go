@@ -1,7 +1,6 @@
 package praxis
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -31,10 +30,8 @@ import (
 func mostCommonWord(paragraph string, banned []string) string {
 	lower := strings.ToLower(paragraph)
 	splits := strings.FieldsFunc(lower, func(r rune) bool {
-		return strings.IndexAny(string(r), "!?',;.") < 0
+		return strings.IndexAny(string(r), "!?',;. ") >= 0
 	})
-	fmt.Println(splits)
-	//splits := strings.Split(lower, " ")
 	filter := make(map[string]int)
 	if banned != nil {
 		for key, value := range banned {
@@ -43,10 +40,9 @@ func mostCommonWord(paragraph string, banned []string) string {
 	}
 	hash := make(map[string]int)
 	for _, value := range splits {
-		str := strings.TrimRight(value, "!?',;.")
-		if filter[str] == 0 {
-			count := hash[str]
-			hash[str] = count + 1
+		if filter[value] == 0 {
+			count := hash[value]
+			hash[value] = count + 1
 		}
 	}
 	last := ""
